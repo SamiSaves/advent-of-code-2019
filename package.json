@@ -1,0 +1,24 @@
+{
+  "name": "advent-of-code-2019",
+  "author": "Sami Saves",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npm run day",
+    "day": "INDEX=\"dist/day-$DAY/part$PART\" bash -c 'node $INDEX'",
+    "build": "npm run type-check && npm run build:js",
+    "build:js": "babel src --out-dir dist --extensions \".ts\"",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- -- watch"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.7.0",
+    "@babel/core": "7.7.2",
+    "@babel/preset-env": "7.7.1",
+    "@babel/preset-typescript": "7.7.2",
+    "@types/node": "12.12.8",
+    "typescript": "3.7.2"
+  }
+}
