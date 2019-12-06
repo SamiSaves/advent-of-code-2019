@@ -20,7 +20,17 @@ const readLines = (path: string): Promise<string[]> => {
   })
 }
 
+const readFile = (path: string): string => {
+  return fs.readFileSync(path, 'utf8')
+}
+
 export const readLinesAsNumbers = async (day: string): Promise<number[]> => {
   const lines = await readLines(inputPath(day))
   return lines.map(Number)
+}
+
+export const readAndSplitAsNumbers = async (day: string, splitter: string): Promise<number[]> => {
+  const file = readFile(inputPath(day))
+  const splitFile = file.split(splitter)
+  return splitFile.map(Number)
 }
