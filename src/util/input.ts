@@ -4,9 +4,9 @@ import * as path from 'path'
 
 const inputPath = (day: string) => path.join(__dirname, '../../src', `day-${day}`, 'input')
 
-const readLines = (path: string): Promise<string[]> => {
+export const readLines = (day: string): Promise<string[]> => {
   return new Promise((resolve, reject) => {
-    const fileStream = fs.createReadStream(path)
+    const fileStream = fs.createReadStream(inputPath(day))
     const lines = []
     const lineStream = readline.createInterface({
       input: fileStream,
@@ -25,7 +25,7 @@ const readFile = (path: string): string => {
 }
 
 export const readLinesAsNumbers = async (day: string): Promise<number[]> => {
-  const lines = await readLines(inputPath(day))
+  const lines = await readLines(day)
   return lines.map(Number)
 }
 
